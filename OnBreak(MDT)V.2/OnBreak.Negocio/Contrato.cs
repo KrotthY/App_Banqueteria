@@ -94,6 +94,22 @@ namespace OnBreak.Negocio
 
         }
 
+        public bool ReadRutCliente()
+        {
+            Datos.OnBreakDBEntities bbdd = new Datos.OnBreakDBEntities();
+            try
+            {
+                Datos.Contrato contrato = bbdd.Contrato.First(first => first.RutCliente == RutCliente);
+                CommonBC.Syncronize(contrato, this);
+                return true;
+            }
+            catch (Exception)
+            {
+                return false;
+            }
+
+        }
+
 
         public bool Create()
         {

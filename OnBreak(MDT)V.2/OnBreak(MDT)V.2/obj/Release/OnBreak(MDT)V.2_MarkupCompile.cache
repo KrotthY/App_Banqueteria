@@ -4,17 +4,17 @@
 winexe
 C#
 .cs
-C:\Users\Nicolas Zuñiga\source\repos\OnBreak(MDT)V.2\OnBreak(MDT)V.2\obj\Release\
+C:\Users\Nicolas Zuñiga\Documents\GitHub\App_Banqueteria\OnBreak(MDT)V.2\OnBreak(MDT)V.2\obj\Release\
 OnBreak_MDT_V._2
 none
 false
 TRACE
-C:\Users\Nicolas Zuñiga\source\repos\OnBreak(MDT)V.2\OnBreak(MDT)V.2\App.xaml
-21942582181
+C:\Users\Nicolas Zuñiga\Documents\GitHub\App_Banqueteria\OnBreak(MDT)V.2\OnBreak(MDT)V.2\App.xaml
+8-2083110067
 
-81051660683
-15509617693
-MainWindow.xaml;UserControlMenuItem.xaml;
+15-1530713712
+24-326274634
+MainWindow.xaml;OpcionalListarCliente.xaml;OpcionalListarContratos.xaml;UserControlAgregarContratos.xaml;UserControlCrearCliente.xaml;UserControlListarCliente.xaml;UserControlListarContratos.xaml;UserControlMenuItem.xaml;
 
 True
 

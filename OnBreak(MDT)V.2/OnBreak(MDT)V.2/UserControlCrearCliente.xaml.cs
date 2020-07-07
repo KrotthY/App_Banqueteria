@@ -66,6 +66,7 @@ namespace OnBreak_MDT_V._2
             cboTipoEmpresa.DisplayMemberPath = "Descripcion";
             cboTipoEmpresa.SelectedValuePath = "IdTipoEmpresa";
             cboTipoEmpresa.SelectedIndex = 0;
+            
         }
 
         // Funciona correctamente
@@ -83,7 +84,7 @@ namespace OnBreak_MDT_V._2
                 IdTipoEmpresa = (int)cboTipoEmpresa.SelectedValue
             };
 
-            if (txtRutCli.Text.Length >= 8 && txtRutCli.Text.Length <= 9)
+            if (txtRutCli.Text.Length >= 7 && txtRutCli.Text.Length <= 11)
             {
 
 
@@ -156,7 +157,7 @@ namespace OnBreak_MDT_V._2
                 RutCliente = txtRutCli.Text
             };
 
-            if (actualizar.Update() == true)
+            if (actualizar.Read())
             {
 
                 actualizar.RutCliente = txtRutCli.Text;
@@ -167,15 +168,17 @@ namespace OnBreak_MDT_V._2
                 actualizar.Telefono = txtTelefonoCli.Text;
                 actualizar.IdActividadEmpresa = cboTipoActividad.SelectedIndex;
                 actualizar.IdTipoEmpresa = cboTipoEmpresa.SelectedIndex;
+                actualizar.Update();
                 MessageBox.Show("Cliente Actualizado", "Informacion", MessageBoxButton.OK, MessageBoxImage.Information);
                 LimpiarCliente();
 
             }
             else
             {
-                MessageBox.Show("Cliente no se puede Actualizar UPDATE", "Atecion", MessageBoxButton.OK, MessageBoxImage.Warning);
+                MessageBox.Show("No existe cliente, al que desea actulizar", "Atecion", MessageBoxButton.OK, MessageBoxImage.Warning);
                 LimpiarCliente();
             }
+            
 
 
         }

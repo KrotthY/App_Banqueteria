@@ -97,7 +97,10 @@ namespace OnBreak_MDT_V._2
                 {
                     realizado1 = false;
                 }
-                Cliente checkCliente = new Cliente();
+                Cliente checkCliente = new Cliente()
+                {
+                    RutCliente = txtRut.Text
+                };
                 Contrato guardarContrato = new Contrato()
                 {
 

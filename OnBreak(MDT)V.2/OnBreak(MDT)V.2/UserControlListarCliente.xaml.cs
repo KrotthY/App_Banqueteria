@@ -95,6 +95,10 @@ namespace OnBreak_MDT_V._2
 
         private void btnEliminar_Click(object sender, RoutedEventArgs e)
         {
+            Contrato checkContrato = new Contrato()
+            {
+                RutCliente = MyGlobals.rut,
+            };
             Cliente cliente = new Cliente()
             {
                 RutCliente = MyGlobals.rut,
@@ -104,21 +108,34 @@ namespace OnBreak_MDT_V._2
             if(txtRutLcli.Text != "")
             {
                 cliente.RutCliente = txtRutLcli.Text;
+                checkContrato.RutCliente  = txtRutLcli.Text;
             }
              
 
             if (cliente.Read())
             {
-                if (cliente.Delete())
+                if (!checkContrato.ReadRutCliente())
                 {
-                    MessageBox.Show("Cliente fue Borrado correctamente", "Notificacion", MessageBoxButton.OK, MessageBoxImage.Information);
-                    LimpiarListar();
+
+
+                    if (cliente.Delete())
+                    {
+                        MessageBox.Show("Cliente fue Borrado correctamente", "Notificacion", MessageBoxButton.OK, MessageBoxImage.Information);
+                        LimpiarListar();
+                    }
+                    else
+                    {
+                        MessageBox.Show("No se puede ejecutar lo solicitado", "Notificacion", MessageBoxButton.OK, MessageBoxImage.Error);
+                        LimpiarListar();
+                    }
+
                 }
                 else
                 {
-                    MessageBox.Show("No se puede ejecutar lo solicitado", "Notificacion", MessageBoxButton.OK, MessageBoxImage.Error);
+                    MessageBox.Show("No se puede eliminar Cliente ya que posee un contrato !!!vigente!!!", "Notificacion", MessageBoxButton.OK, MessageBoxImage.Warning);
                     LimpiarListar();
                 }
+
             }
             else
             {
