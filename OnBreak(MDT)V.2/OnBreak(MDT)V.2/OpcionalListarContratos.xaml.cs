@@ -32,36 +32,35 @@ namespace OnBreak_MDT_V._2
             dgListaContratos.ItemsSource = new Contrato().ReadAll();
 
         }
-
+        public Contrato contra { get; private set; }
         // Funciona correctamente el metodo para poder extrar una fila desde el data grid
         private void dgListaContratos_MouseDoubleClick(object sender, MouseButtonEventArgs e)
         {
-            Contrato listarContrato = dgListaContratos.SelectedItem as Contrato;
 
+            Contrato contrato = dgListaContratos.SelectedItem as Contrato;
+            if (contrato != null)
+            {
+                this.contra = contrato;
+                reference.contraGlobal = contra;
+            }
 
-            MyGlobalContrato.numero = listarContrato.Numero;
-            MyGlobalContrato.creacion = listarContrato.Creacion;
-            MyGlobalContrato.termino = listarContrato.Termino;
-            MyGlobalContrato.rutCliente = listarContrato.RutCliente;
-            MyGlobalContrato.idModalidad = listarContrato.IdModalidad;
-            MyGlobalContrato.idTipoEvento = listarContrato.IdTipoEvento;
-            MyGlobalContrato.fechaHoraInicio = listarContrato.FechaHoraInicio;
-            MyGlobalContrato.fechaHoraTermino = listarContrato.FechaHoraTermino;
-            MyGlobalContrato.asistentes = listarContrato.Asistentes;
-            MyGlobalContrato.personalAdicional = listarContrato.PersonalAdicional;
-            MyGlobalContrato.realizado = listarContrato.Realizado;
-            MyGlobalContrato.valorTotalContrato = listarContrato.ValorTotalContrato;
-            MyGlobalContrato.observaciones = listarContrato.Observaciones;
+            reference.MostrarDatosContrato();
 
+            this.Close();
+        }
+        private void Window_Closed(object sender, EventArgs e)
+        {
+            reference.MostrarDatosContrato();
             Close();
         }
 
+        UserControlAgregarContratos reference;
 
-        // Funciona correctamente pero siento que no es necesario falta modificar 
-        private void Window_Closed(object sender, EventArgs e)
+        internal void SetUserControl(UserControlAgregarContratos win)
         {
-  
-                Close();
+            this.reference = win;
         }
+
+
     }
 }

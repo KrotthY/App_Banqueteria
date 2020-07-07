@@ -48,7 +48,6 @@
         <xctk:DateTimePicker x:Name="dtpHoraTermino" Height = "25" HorizontalAlignment = "Left" Margin = "500,280,0,0"  VerticalAlignment = "Top" Width = "129" Format="ShortTime" />
         <RadioButton x:Name="rbtRealizado" Content="Realizado" HorizontalAlignment="Left" Margin="145,402,0,0" VerticalAlignment="Top" />
         <Label Content="Marque si el contrato esta cumplido" HorizontalAlignment="Left" Margin="72,378,0,0" VerticalAlignment="Top"/>
-        <Button x:Name="btnActualizar" Content="Actualizar" HorizontalAlignment="Left" Margin="358,184,0,0" VerticalAlignment="Top" Width="100" Click="btnActualizar_Click" />
 
     </Grid>
 </UserControl>

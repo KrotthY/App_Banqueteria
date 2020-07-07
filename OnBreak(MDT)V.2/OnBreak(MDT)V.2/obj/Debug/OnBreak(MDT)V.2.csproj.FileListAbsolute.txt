@@ -126,7 +126,6 @@ C:\Users\PC\Desktop\Proyectos\App_Banqueteria\OnBreak(MDT)V.2\OnBreak(MDT)V.2\ob
 C:\Users\PC\Desktop\Proyectos\App_Banqueteria\OnBreak(MDT)V.2\OnBreak(MDT)V.2\obj\Debug\OnBreak(MDT)V.2.csproj.CopyComplete
 C:\Users\PC\Desktop\Proyectos\App_Banqueteria\OnBreak(MDT)V.2\OnBreak(MDT)V.2\obj\Debug\OnBreak(MDT)V.2.exe
 C:\Users\PC\Desktop\Proyectos\App_Banqueteria\OnBreak(MDT)V.2\OnBreak(MDT)V.2\obj\Debug\OnBreak(MDT)V.2.pdb
-C:\Users\Nicolas Zuñiga\Documents\GitHub\App_Banqueteria\OnBreak(MDT)V.2\OnBreak(MDT)V.2\obj\Debug\OnBreak(MDT)V.2.g.resources
 C:\Users\Nicolas Zuñiga\Documents\GitHub\App_Banqueteria\OnBreak(MDT)V.2\OnBreak(MDT)V.2\bin\Debug\OnBreakDB.mdf
 C:\Users\Nicolas Zuñiga\Documents\GitHub\App_Banqueteria\OnBreak(MDT)V.2\OnBreak(MDT)V.2\bin\Debug\OnBreakDB_log.ldf
 C:\Users\Nicolas Zuñiga\Documents\GitHub\App_Banqueteria\OnBreak(MDT)V.2\OnBreak(MDT)V.2\bin\Debug\OnBreak(MDT)V.2.exe.config
@@ -184,6 +183,7 @@ C:\Users\Nicolas Zuñiga\Documents\GitHub\App_Banqueteria\OnBreak(MDT)V.2\OnBrea
 C:\Users\Nicolas Zuñiga\Documents\GitHub\App_Banqueteria\OnBreak(MDT)V.2\OnBreak(MDT)V.2\obj\Debug\UserControlListarCliente.baml
 C:\Users\Nicolas Zuñiga\Documents\GitHub\App_Banqueteria\OnBreak(MDT)V.2\OnBreak(MDT)V.2\obj\Debug\UserControlListarContratos.baml
 C:\Users\Nicolas Zuñiga\Documents\GitHub\App_Banqueteria\OnBreak(MDT)V.2\OnBreak(MDT)V.2\obj\Debug\UserControlMenuItem.baml
+C:\Users\Nicolas Zuñiga\Documents\GitHub\App_Banqueteria\OnBreak(MDT)V.2\OnBreak(MDT)V.2\obj\Debug\OnBreak(MDT)V.2.g.resources
 C:\Users\Nicolas Zuñiga\Documents\GitHub\App_Banqueteria\OnBreak(MDT)V.2\OnBreak(MDT)V.2\obj\Debug\OnBreak_MDT_V._2.Properties.Resources.resources
 C:\Users\Nicolas Zuñiga\Documents\GitHub\App_Banqueteria\OnBreak(MDT)V.2\OnBreak(MDT)V.2\obj\Debug\OnBreak(MDT)V.2.csproj.GenerateResource.cache
 C:\Users\Nicolas Zuñiga\Documents\GitHub\App_Banqueteria\OnBreak(MDT)V.2\OnBreak(MDT)V.2\obj\Debug\OnBreak(MDT)V.2.csproj.CoreCompileInputs.cache

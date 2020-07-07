@@ -68,20 +68,6 @@ namespace OnBreak_MDT_V._2
 
         }
 
-        // Funciona correctamente pero deberia actualizar el datagrid de forma automatica
-        // debe mejorarse
-        private void btnActualizar_Click(object sender, RoutedEventArgs e)
-        {
-
-            dgListaClienteLcli.ItemsSource = null;
-            dgListaClienteLcli.ItemsSource = new Cliente().ReadAll();
-
-            txtRutLcli.Text = MyGlobals.rut;
-            cboTipoActividad.SelectedIndex = MyGlobals.actividad;
-            cboTipoEmpresa.SelectedIndex = MyGlobals.empresa;
-
-        }
-
 
         // Solo se entrega un mensaje pero no tiene funciones incorporadas
         private void btnImprimir_Click(object sender, RoutedEventArgs e)
@@ -152,6 +138,11 @@ namespace OnBreak_MDT_V._2
             MyGlobals.actividad = cliente.IdActividadEmpresa;
             MyGlobals.empresa = cliente.IdTipoEmpresa;
 
+
+            txtRutLcli.Text = MyGlobals.rut;
+            cboTipoActividad.SelectedIndex = MyGlobals.actividad;
+            cboTipoEmpresa.SelectedIndex = MyGlobals.empresa;
+
         }
 
         private void btnBuscar_Click(object sender, RoutedEventArgs e)
@@ -177,5 +168,13 @@ namespace OnBreak_MDT_V._2
                 LimpiarListar();
             }
         }
+
+        private void Grid_IsVisibleChanged(object sender, DependencyPropertyChangedEventArgs e)
+        {
+            dgListaClienteLcli.ItemsSource = null;
+            dgListaClienteLcli.ItemsSource = new Cliente().ReadAll();
+        }
+
+
     }
 }

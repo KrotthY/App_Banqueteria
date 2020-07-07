@@ -170,11 +170,11 @@ namespace OnBreak_MDT_V._2
 
 
 
-            if (buscarContrato.Read() == true)
+            if (buscarContrato.Read())
             {
                 MessageBox.Show("Contrato encontratado", "Informacion", MessageBoxButton.OK, MessageBoxImage.Information);
 
-                if (buscarContrato.Realizado == true)
+                if (buscarContrato.Realizado)
                 {
                     rbtRealizado.IsChecked = buscarContrato.Realizado;
                 }
@@ -277,10 +277,13 @@ namespace OnBreak_MDT_V._2
 
 
         //Funciona Correctamente
+        public Contrato contraGlobal;
+
         private void btnListar_Click(object sender, RoutedEventArgs e)
         {
-
+            Contrato contra = new Contrato();
             OpcionalListarContratos opcionalContratos = new OpcionalListarContratos();
+            opcionalContratos.SetUserControl(this);
 
             opcionalContratos.Show();
 
@@ -349,29 +352,30 @@ namespace OnBreak_MDT_V._2
 
 
         //Setear clases globales
-        public void setearContrato()
+        public void MostrarDatosContrato()
         {
-            txtNumeroContrato.Text = MyGlobalContrato.numero ;
-            dtpFechaInicio.SelectedDate = MyGlobalContrato.creacion;
-            dtpFechaTermino.SelectedDate = MyGlobalContrato.termino;
-            txtRut.Text = MyGlobalContrato.rutCliente;
-            cboModalidad.SelectedValue = MyGlobalContrato.idModalidad;
-            cboTipoEvento.SelectedValue = MyGlobalContrato.idTipoEvento;
-            dtpHoraInicio.Value = MyGlobalContrato.fechaHoraInicio;
-            dtpHoraTermino.Value = MyGlobalContrato.fechaHoraTermino;
-            txtAsistentes.Text = MyGlobalContrato.asistentes.ToString();
-            txtPersonalAdicional.Text = MyGlobalContrato.personalAdicional.ToString();
-            rbtRealizado.IsChecked = MyGlobalContrato.realizado;
-            txbTotal.Text = MyGlobalContrato.valorTotalContrato.ToString();
-            txtObservaciones.Text = MyGlobalContrato.observaciones ;
+
+            if (contraGlobal != null)
+            {
+
+                txtNumeroContrato.Text = contraGlobal.Numero;
+                dtpFechaInicio.SelectedDate = contraGlobal.Creacion;
+                dtpFechaTermino.SelectedDate = contraGlobal.Termino;
+                txtRut.Text = contraGlobal.RutCliente;
+                cboModalidad.SelectedValue = contraGlobal.IdModalidad;
+                cboTipoEvento.SelectedValue = contraGlobal.IdTipoEvento;
+                dtpHoraInicio.Value = contraGlobal.FechaHoraInicio;
+                dtpHoraTermino.Value = contraGlobal.FechaHoraTermino;
+                txtAsistentes.Text = contraGlobal.Asistentes.ToString();
+                txtPersonalAdicional.Text = contraGlobal.PersonalAdicional.ToString();
+                rbtRealizado.IsChecked = contraGlobal.Realizado;
+                txbTotal.Text = contraGlobal.ValorTotalContrato.ToString();
+                txtObservaciones.Text = contraGlobal.Observaciones;
+
+            }
+
         }
 
-
-        //Actualizar completo pero no es necesario
-        private void btnActualizar_Click(object sender, RoutedEventArgs e)
-        {
-            setearContrato();
-        }
     }
 
 }

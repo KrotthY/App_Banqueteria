@@ -63,15 +63,6 @@ namespace OnBreak_MDT_V._2
         //Funciona correctamente
         //solo es un boton para actualizar el data grid, esto debe mejorarse ya que deberia
         //Actualizarse a tiempo real para asi quitar este boton inecesario
-        private void btnActualizar_Click(object sender, RoutedEventArgs e)
-        {
-            dgListaContratoLc.ItemsSource = null;
-            dgListaContratoLc.ItemsSource = new Contrato().ReadAll();
-
-            txtRutLc.Text = MyGlobalContrato.rutCliente;
-            cboTipoEvento.SelectedIndex = MyGlobalContrato.idTipoEvento;
-            txtNroContrato.Text = MyGlobalContrato.numero;
-        }
 
         private void btnEliminar_Click(object sender, RoutedEventArgs e)
         {
@@ -113,6 +104,12 @@ namespace OnBreak_MDT_V._2
             MyGlobalContrato.numero = contrato.Numero;
             MyGlobalContrato.rutCliente = contrato.RutCliente;
             MyGlobalContrato.idTipoEvento = contrato.IdTipoEvento;
+
+            txtRutLc.Text = MyGlobalContrato.rutCliente;
+            cboTipoEvento.SelectedIndex = MyGlobalContrato.idTipoEvento;
+            txtNroContrato.Text = MyGlobalContrato.numero;
+
+
         }
 
         private void btnBuscar_Click(object sender, RoutedEventArgs e)
@@ -137,6 +134,16 @@ namespace OnBreak_MDT_V._2
                 MessageBox.Show("Contrato NO fue Encontrado", "Notificacion", MessageBoxButton.OK, MessageBoxImage.Warning);
                 LimpiarListarContrato();
             }
+
+
+        }
+
+        private void Grid_IsVisibleChanged(object sender, DependencyPropertyChangedEventArgs e)
+        {
+
+            dgListaContratoLc.ItemsSource = null;
+            dgListaContratoLc.ItemsSource = new Contrato().ReadAll();
+
         }
     }
 }

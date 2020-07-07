@@ -6,7 +6,7 @@
              xmlns:local="clr-namespace:OnBreak_MDT_V._2"
              mc:Ignorable="d" 
              d:DesignHeight="450" d:DesignWidth="800">
-    <Grid Background="White">
+    <Grid Background="White" IsVisibleChanged="Grid_IsVisibleChanged">
         
         <Label Content="Rut" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="63,30,0,0" RenderTransformOrigin="0.645,0.792"/>
         <Label Content="Tipo Actividad*" HorizontalAlignment="Left" Margin="54,84,0,0" VerticalAlignment="Top"/>
@@ -32,9 +32,8 @@
             
         </DataGrid>
         <Button x:Name="btnImprimir" Content="Imprimir" HorizontalAlignment="Left" Margin="618,408,0,0" VerticalAlignment="Top" Width="142" Click="btnImprimir_Click"/>
-        <Button x:Name="btnActualizar" Content="Actualizar" HorizontalAlignment="Left" Margin="469,95,0,0" VerticalAlignment="Top" Width="100" Click="btnActualizar_Click"/>
-        <Button x:Name="btnEliminar" Content="Eliminar" HorizontalAlignment="Left" Margin="588,95,0,0" VerticalAlignment="Top" Width="100" Click="btnEliminar_Click"/>
-        <Button x:Name="btnBuscar" Content="Buscar" HorizontalAlignment="Left" Margin="351,95,0,0" VerticalAlignment="Top" Width="100" Click="btnBuscar_Click"/>
+        <Button x:Name="btnEliminar" Content="Eliminar" HorizontalAlignment="Left" Margin="588,87,0,0" VerticalAlignment="Top" Width="100" Click="btnEliminar_Click"/>
+        <Button x:Name="btnBuscar" Content="Buscar" HorizontalAlignment="Left" Margin="422,87,0,0" VerticalAlignment="Top" Width="100" Click="btnBuscar_Click"/>
 
     </Grid>
 </UserControl>

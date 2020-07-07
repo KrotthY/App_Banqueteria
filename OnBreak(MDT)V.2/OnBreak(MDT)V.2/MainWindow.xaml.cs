@@ -36,26 +36,12 @@ namespace OnBreak_MDT_V._2
 
             var item2 = new ItemMenu("Adm Contratos", menuContrato, PackIconKind.Contract);
 
-            //var menuCuenta = new List<SubItem>();
-            //menuCuenta.Add(new SubItem("Perfil usuario"));
-            //menuCuenta.Add(new SubItem("Social"));
-            //menuCuenta.Add(new SubItem("Tarea"));
 
-            //var item3 = new ItemMenu("Cuenta", menuCuenta, PackIconKind.FaceProfileWoman);
-
-            //var menuConfig = new List<SubItem>();
-            //menuConfig.Add(new SubItem("Temas"));
-            //menuConfig.Add(new SubItem("Ayuda"));
-            //menuConfig.Add(new SubItem("Comentarios"));
-
-            //var item4 = new ItemMenu("Personalización", menuConfig, PackIconKind.Theme);
 
 
             Menu.Children.Add(new UserControlMenuItem(item0, this));
             Menu.Children.Add(new UserControlMenuItem(item1, this));
             Menu.Children.Add(new UserControlMenuItem(item2, this));
-            //Menu.Children.Add(new UserControlMenuItem(item3, this));
-            //Menu.Children.Add(new UserControlMenuItem(item4, this));
 
         }
 
