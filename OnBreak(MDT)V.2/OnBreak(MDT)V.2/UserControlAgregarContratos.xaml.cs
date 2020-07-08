@@ -40,6 +40,7 @@ namespace OnBreak_MDT_V._2
         private void LimpiarContratos()
         {
             txtRut.Text = string.Empty;
+            txtRazonSocial.Text = string.Empty;
             txtNumeroContrato.Text = string.Empty;
             dtpFechaInicio.DisplayDateEnd = DateTime.Today;
             dtpFechaTermino.DisplayDateStart = DateTime.Today;
@@ -115,7 +116,7 @@ namespace OnBreak_MDT_V._2
                     Asistentes = int.Parse(txtAsistentes.Text),
                     PersonalAdicional = int.Parse(txtPersonalAdicional.Text),
                     Realizado = realizado1,
-                    ValorTotalContrato = MyGlobals.total,
+                    ValorTotalContrato = MyGlobals._total,
                     Observaciones = txtObservaciones.Text
 
                 };
@@ -163,115 +164,26 @@ namespace OnBreak_MDT_V._2
         // Aun sin terminar pero se tiene un idea del desarrollo
         private void btnBuscar_Click(object sender, RoutedEventArgs e)
         {
-            Contrato buscarContrato = new Contrato()
+            Cliente buscarCliente = new Cliente()
             {
-                Numero = txtNumeroContrato.Text
+                RutCliente = txtRut.Text
             };
 
 
 
-            if (buscarContrato.Read())
+            if (buscarCliente.Read())
             {
-                MessageBox.Show("Contrato encontratado", "Informacion", MessageBoxButton.OK, MessageBoxImage.Information);
+                MessageBox.Show("Cliente encontratado", "Informacion", MessageBoxButton.OK, MessageBoxImage.Information);
 
-                if (buscarContrato.Realizado)
-                {
-                    rbtRealizado.IsChecked = buscarContrato.Realizado;
-                }
-                else
-                {
-                    rbtRealizado.IsChecked = buscarContrato.Realizado;
-                }
-
-                txtNumeroContrato.Text = buscarContrato.Numero;
-                dtpFechaInicio.SelectedDate = buscarContrato.Creacion;
-                dtpFechaTermino.SelectedDate = buscarContrato.Termino;
-                txtRut.Text = buscarContrato.RutCliente;
-                cboModalidad.SelectedValue = buscarContrato.IdModalidad;
-                cboTipoEvento.SelectedValue = buscarContrato.IdTipoEvento;
-                dtpHoraInicio.Value = buscarContrato.FechaHoraInicio;
-                dtpHoraTermino.Value = buscarContrato.FechaHoraTermino;
-                txtAsistentes.Text = buscarContrato.Asistentes.ToString();
-                txtPersonalAdicional.Text = buscarContrato.PersonalAdicional.ToString();
-                txbTotal.Text = buscarContrato.ValorTotalContrato.ToString();
-                txtObservaciones.Text = buscarContrato.Observaciones;
-
-
+                txtRut.Text = buscarCliente.RutCliente;
+                txtRazonSocial.Text = buscarCliente.RazonSocial;
 
             }
             else
             {
-                MessageBox.Show("Contrato no se encuentra registrado", "Atecion", MessageBoxButton.OK, MessageBoxImage.Warning);
+                MessageBox.Show("Cliente no se encuentra registrado, revise el Rut ingresado", "Atecion", MessageBoxButton.OK, MessageBoxImage.Warning);
                 LimpiarContratos();
             }
-        }
-
-
-
-        // El metodo funciona correctamente el  calculo
-        //Falta Agregar valor de eventos
-        private void CalcularValorContrato()
-        {
-            int totalAsistentes = 0;
-            int totalAdicional = 0;
-            int UF = 30000;
-
-            int _asistentes = Convert.ToInt32(txtAsistentes.Text);
-            int _personalAdicional = Convert.ToInt32(txtPersonalAdicional.Text);
-
-            if ((_asistentes >= 1) &(_asistentes <= 20))
-            {
-                totalAsistentes = UF * 3;
-            }else if ((_asistentes >= 21) & (_asistentes <= 50))
-            {
-                totalAsistentes = UF * 5;
-            }else if (_asistentes >= 51)
-            {
-                int adicional = 0;
-                int contador = 0;
-
-                adicional = _asistentes - 50;
-
-                //Se divide por 20 ya que son los grupos de personas para cobrar un valor adicional
-                contador= adicional / 20;
-                contador = contador * 2;
-                totalAsistentes = UF * (contador + 5);
-            }
-
-            //Calculo Personal Adicional
-
-           
-
-            if (_personalAdicional == 2)
-            {
-                totalAdicional = UF * 2;
-            }else if (_personalAdicional == 3)
-            {
-                totalAdicional = UF * 3;
-            }else if(_personalAdicional == 4)
-            {
-                totalAdicional = UF * (int)3.5;
-            }else if(_personalAdicional > 4)
-            {
-                double adicionalPersonal = 0;
-                
-                adicionalPersonal = _personalAdicional - 4;
-
-                // aca obtengo la cantidad total de uf segun el contrato adicional de empleados
-                adicionalPersonal = adicionalPersonal * 0.5;
-
-                adicionalPersonal=  adicionalPersonal + 3.5;
-
-                totalAdicional = UF * (int)adicionalPersonal; 
-            }
-
-
-           int total = totalAsistentes + totalAdicional;
-
-            MyGlobals.total = total;
-
-            txbTotal.Text = total.ToString();
-
         }
 
 
@@ -326,7 +238,7 @@ namespace OnBreak_MDT_V._2
                 actualizarContrato.Asistentes = int.Parse(txtAsistentes.Text);
                 actualizarContrato.PersonalAdicional = int.Parse(txtPersonalAdicional.Text);
                 actualizarContrato.Realizado = realizado1;
-                actualizarContrato.ValorTotalContrato = MyGlobals.total;
+                actualizarContrato.ValorTotalContrato = MyGlobals._total;
                 actualizarContrato.Observaciones = txtObservaciones.Text;
 
 
@@ -347,7 +259,13 @@ namespace OnBreak_MDT_V._2
         //Terminado
         private void txtPersonalAdicional_KeyUp(object sender, KeyEventArgs e)
         {
+            
+
+            MyGlobals._asistentes = Convert.ToInt32(txtAsistentes.Text);
+            MyGlobals._personalAdicional = Convert.ToInt32(txtPersonalAdicional.Text);
             CalcularValorContrato();
+
+            txbTotal.Text = MyGlobals._total.ToString();
         }
 
 
@@ -374,6 +292,77 @@ namespace OnBreak_MDT_V._2
 
             }
 
+        }
+
+
+
+
+        // El metodo funciona correctamente el  calculo
+        //Falta Agregar valor de eventos
+        private void CalcularValorContrato()
+        {
+            int totalAsistentes = 0;
+            int totalAdicional = 0;
+            int UF = 30000;
+
+            int _asistentes = MyGlobals._asistentes;
+            int _personalAdicional = MyGlobals._personalAdicional;
+
+            if ((_asistentes >= 1) & (_asistentes <= 20))
+            {
+                totalAsistentes = UF * 3;
+            }
+            else if ((_asistentes >= 21) & (_asistentes <= 50))
+            {
+                totalAsistentes = UF * 5;
+            }
+            else if (_asistentes >= 51)
+            {
+                int adicional = 0;
+                int contador = 0;
+
+                adicional = _asistentes - 50;
+
+                //Se divide por 20 ya que son los grupos de personas para cobrar un valor adicional
+                contador = adicional / 20;
+                contador = contador * 2;
+                totalAsistentes = UF * (contador + 5);
+            }
+
+            //Calculo Personal Adicional
+
+
+
+            if (_personalAdicional == 2)
+            {
+                totalAdicional = UF * 2;
+            }
+            else if (_personalAdicional == 3)
+            {
+                totalAdicional = UF * 3;
+            }
+            else if (_personalAdicional == 4)
+            {
+                totalAdicional = UF * (int)3.5;
+            }
+            else if (_personalAdicional > 4)
+            {
+                double adicionalPersonal = 0;
+
+                adicionalPersonal = _personalAdicional - 4;
+
+                // aca obtengo la cantidad total de uf segun el contrato adicional de empleados
+                adicionalPersonal = adicionalPersonal * 0.5;
+
+                adicionalPersonal = adicionalPersonal + 3.5;
+
+                totalAdicional = UF * (int)adicionalPersonal;
+            }
+
+
+            int total = totalAsistentes + totalAdicional;
+
+            MyGlobals._total = total;
         }
 
     }

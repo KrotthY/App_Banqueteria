@@ -68,7 +68,7 @@ namespace OnBreak_MDT_V._2
         {
             Contrato contrato = new Contrato()
             {
-                Numero = MyGlobalContrato.numero
+                Numero = MyGlobalContrato._numero
             };
 
             if (txtNroContrato.Text != "")
@@ -101,13 +101,13 @@ namespace OnBreak_MDT_V._2
         {
             Contrato contrato = dgListaContratoLc.SelectedItem as Contrato;
 
-            MyGlobalContrato.numero = contrato.Numero;
-            MyGlobalContrato.rutCliente = contrato.RutCliente;
-            MyGlobalContrato.idTipoEvento = contrato.IdTipoEvento;
+            MyGlobalContrato._numero = contrato.Numero;
+            MyGlobalContrato._rutCliente = contrato.RutCliente;
+            MyGlobalContrato._idTipoEvento = contrato.IdTipoEvento;
 
-            txtRutLc.Text = MyGlobalContrato.rutCliente;
-            cboTipoEvento.SelectedIndex = MyGlobalContrato.idTipoEvento;
-            txtNroContrato.Text = MyGlobalContrato.numero;
+            txtRutLc.Text = MyGlobalContrato._rutCliente;
+            cboTipoEvento.SelectedIndex = MyGlobalContrato._idTipoEvento;
+            txtNroContrato.Text = MyGlobalContrato._numero;
 
 
         }

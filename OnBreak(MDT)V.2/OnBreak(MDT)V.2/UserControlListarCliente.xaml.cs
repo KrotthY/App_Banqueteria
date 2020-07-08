@@ -83,11 +83,11 @@ namespace OnBreak_MDT_V._2
         {
             Contrato checkContrato = new Contrato()
             {
-                RutCliente = MyGlobals.rut,
+                RutCliente = MyGlobals._rut,
             };
             Cliente cliente = new Cliente()
             {
-                RutCliente = MyGlobals.rut,
+                RutCliente = MyGlobals._rut,
                 
             };
 
@@ -134,14 +134,14 @@ namespace OnBreak_MDT_V._2
         {
             Cliente cliente = dgListaClienteLcli.SelectedItem as Cliente;
 
-            MyGlobals.rut = cliente.RutCliente;
-            MyGlobals.actividad = cliente.IdActividadEmpresa;
-            MyGlobals.empresa = cliente.IdTipoEmpresa;
+            MyGlobals._rut = cliente.RutCliente;
+            MyGlobals._actividad = cliente.IdActividadEmpresa;
+            MyGlobals._empresa = cliente.IdTipoEmpresa;
 
 
-            txtRutLcli.Text = MyGlobals.rut;
-            cboTipoActividad.SelectedIndex = MyGlobals.actividad;
-            cboTipoEmpresa.SelectedIndex = MyGlobals.empresa;
+            txtRutLcli.Text = MyGlobals._rut;
+            cboTipoActividad.SelectedIndex = MyGlobals._actividad;
+            cboTipoEmpresa.SelectedIndex = MyGlobals._empresa;
 
         }
 

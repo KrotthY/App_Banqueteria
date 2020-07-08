@@ -73,31 +73,22 @@ namespace OnBreak_MDT_V._2
 
 public static class MyGlobals
 {
-    public static string xd;
-    public static string rut;
-    public static string razon;
-    public static string contacto;
-    public static string email;
-    public static string direccion;
-    public static string telefono;
-    public static int actividad;
-    public static int empresa;
-    public static int total;
+    public static int _total;
+    public static int _asistentes;
+    public static int _personalAdicional;
+    public static string _rut;
+    public static int _actividad;
+    public static int _empresa;
+
+
 }
 
 public static class MyGlobalContrato
 {
-    public static string numero;
-    public static DateTime creacion;
-    public static DateTime termino;
-    public static string rutCliente;
-    public static string idModalidad;
-    public static int idTipoEvento;
-    public static DateTime fechaHoraInicio;
-    public static DateTime fechaHoraTermino;
-    public static int asistentes;
-    public static int personalAdicional;
-    public static bool realizado;
-    public static double valorTotalContrato;
-    public static string observaciones;
+    public static string _numero;
+    public static string _rutCliente;
+    public static int _idTipoEvento;
+
 }
+
+
