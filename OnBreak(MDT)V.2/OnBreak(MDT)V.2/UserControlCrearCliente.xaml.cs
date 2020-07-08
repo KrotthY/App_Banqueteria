@@ -157,8 +157,8 @@ namespace OnBreak_MDT_V._2
                 RutCliente = txtRutCli.Text
             };
 
-            if (actualizar.Read())
-            {
+            //if (actualizar)
+            //{
 
                 actualizar.RutCliente = txtRutCli.Text;
                 actualizar.RazonSocial = txtRazonSocialCli.Text;
@@ -172,12 +172,12 @@ namespace OnBreak_MDT_V._2
                 MessageBox.Show("Cliente Actualizado", "Informacion", MessageBoxButton.OK, MessageBoxImage.Information);
                 LimpiarCliente();
 
-            }
-            else
-            {
-                MessageBox.Show("No existe cliente, al que desea actulizar", "Atecion", MessageBoxButton.OK, MessageBoxImage.Warning);
-                LimpiarCliente();
-            }
+            //}
+            ////else
+            //{
+            //    MessageBox.Show("No existe cliente, al que desea actulizar", "Atecion", MessageBoxButton.OK, MessageBoxImage.Warning);
+            //    LimpiarCliente();
+            //}
             
 
 
