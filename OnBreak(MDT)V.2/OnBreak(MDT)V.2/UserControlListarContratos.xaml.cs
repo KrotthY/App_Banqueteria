@@ -50,6 +50,8 @@ namespace OnBreak_MDT_V._2
             cboTipoEvento.DisplayMemberPath = "Descripcion";
             cboTipoEvento.SelectedValuePath = "IdTipoEvento";
             cboTipoEvento.SelectedIndex = 0;
+            
+
         }
 
 

@@ -75,11 +75,6 @@ namespace OnBreak.Negocio
             }
 
 
-            /*
-             Lista, traiga todos los tipos modalividad,
-
-             
-             */
 
         }
     }

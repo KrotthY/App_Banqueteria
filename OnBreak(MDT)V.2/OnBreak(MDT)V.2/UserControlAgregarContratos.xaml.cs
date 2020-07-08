@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Data;
 using System.Linq;
+using System.Net;
 using System.Runtime.InteropServices;
 using System.Text;
 using System.Threading;
@@ -31,7 +32,8 @@ namespace OnBreak_MDT_V._2
         {
             InitializeComponent();
             LimpiarContratos();
-            
+            Inicio = true;
+
 
         }
 
@@ -46,27 +48,20 @@ namespace OnBreak_MDT_V._2
             dtpFechaTermino.DisplayDateStart = DateTime.Today;
             txtAsistentes.Text = string.Empty;
             txtPersonalAdicional.Text = string.Empty;
-            dtpHoraInicio.Text = DateTime.Now.ToString("MM / dd / aaaa"); 
+            dtpHoraInicio.Text = DateTime.Now.ToString("MM / dd / aaaa");
             dtpHoraTermino.Text = DateTime.Now.ToString("MM / dd / aaaa");
             txbTotal.Text = string.Empty;
             txtObservaciones.Text = string.Empty;
-            rbtRealizado.IsChecked= false;
-            
-       
-            CargarModalidadServicio();
+            rbtRealizado.IsChecked = false;
+
+
+            //CargarModalidadServicio();
             CargarTipoEvento();
+            
+
         }
 
-
-
-        // Funciona correctamente
-        private void CargarModalidadServicio()
-        {
-            cboModalidad.ItemsSource = new ModalidadServicio().ReadAll();
-            cboModalidad.DisplayMemberPath = "Nombre";
-            cboModalidad.SelectedValuePath = "IdModalidad";
-            cboModalidad.SelectedIndex = 0;
-        }
+        public bool Inicio = false; 
 
 
         // Funciona correctamente
@@ -76,11 +71,13 @@ namespace OnBreak_MDT_V._2
             cboTipoEvento.DisplayMemberPath = "Descripcion";
             cboTipoEvento.SelectedValuePath = "IdTipoEvento";
             cboTipoEvento.SelectedIndex = 0;
+
+         
         }
 
 
 
-      
+
         // Funciona correctamente guardar un cliente tiene que revisarse
         private void btnGuardar_Click(object sender, RoutedEventArgs e)
         {
@@ -98,6 +95,7 @@ namespace OnBreak_MDT_V._2
                 {
                     realizado1 = false;
                 }
+
                 Cliente checkCliente = new Cliente()
                 {
                     RutCliente = txtRut.Text
@@ -148,15 +146,14 @@ namespace OnBreak_MDT_V._2
                     MessageBox.Show("Error, el cliente no registrado y no es posible realizar la accion", "Atencion", MessageBoxButton.OK, MessageBoxImage.Warning);
                     LimpiarContratos();
                 }
-                
+
             }
-            catch (Exception )
+            catch (Exception)
             {
                 MessageBox.Show("Error tiene que Ingresar todos los datos", "Atencion", MessageBoxButton.OK, MessageBoxImage.Warning);
-                LimpiarContratos();
-                
+
             }
-            
+
 
         }
 
@@ -259,7 +256,7 @@ namespace OnBreak_MDT_V._2
         //Terminado
         private void txtPersonalAdicional_KeyUp(object sender, KeyEventArgs e)
         {
-            
+
 
             MyGlobals._asistentes = Convert.ToInt32(txtAsistentes.Text);
             MyGlobals._personalAdicional = Convert.ToInt32(txtPersonalAdicional.Text);
@@ -365,9 +362,53 @@ namespace OnBreak_MDT_V._2
             MyGlobals._total = total;
         }
 
-    }
 
+        private void cboModalidad_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+
+
+
+        }
+
+        private void cboTipoEvento_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            if (Inicio)
+            {
+                ModalidadServicio modalidad = new ModalidadServicio();
+
+                try
+                {
+                    string valor;
+
+                    valor = cboTipoEvento.SelectedValue.ToString();
+                    List<ModalidadServicio> modalidadServicios = new List<ModalidadServicio>();
+
+                    foreach (var x in modalidad.ReadAll())
+                    {
+
+                        if (x.IdTipoEvento == int.Parse(valor))
+                        {
+                            modalidadServicios.Add(x);
+
+                        }
+                    }
+
+                    cboModalidad.ItemsSource = modalidadServicios;
+                    cboModalidad.DisplayMemberPath = "Nombre";
+                    cboModalidad.SelectedValuePath = "IdModalidad";
+                    cboModalidad.SelectedIndex = 0;
+                    
+                }
+                catch (Exception)
+                {
+
+                }
+            }
+        }
+    }
 }
+
+
          
     
             
