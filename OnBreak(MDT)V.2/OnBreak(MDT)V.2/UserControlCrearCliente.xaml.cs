@@ -1,21 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Net;
-using System.Text;
-using System.Threading.Tasks;
+﻿using OnBreak.Negocio;
 using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
-using System.Windows.Shapes;
-using MaterialDesignThemes.Wpf;
-using Microsoft.SqlServer.Server;
-using OnBreak.Negocio;
 
 namespace OnBreak_MDT_V._2
 {
@@ -33,7 +18,7 @@ namespace OnBreak_MDT_V._2
 
         }
 
-        // Funciona correctamente
+        // Limpia la vista de usuario, txt etc.
         private void LimpiarCliente()
         {
             txtRutCli.Text = string.Empty;
@@ -48,7 +33,7 @@ namespace OnBreak_MDT_V._2
             CargarTipoEmpresa();
         }
 
-        // Funciona correctamente
+        // Cargar Combobox cbo actividad
         private void CargarActividadEmpresa()
         {
             cboTipoActividad.ItemsSource = new ActividadEmpresa().ReadAll();
@@ -58,18 +43,18 @@ namespace OnBreak_MDT_V._2
 
         }
 
-        // Funciona correctamente
-
+        // Cargar Combobox cbotipo
         private void CargarTipoEmpresa()
         {
             cboTipoEmpresa.ItemsSource = new TipoEmpresa().ReadAll();
             cboTipoEmpresa.DisplayMemberPath = "Descripcion";
             cboTipoEmpresa.SelectedValuePath = "IdTipoEmpresa";
             cboTipoEmpresa.SelectedIndex = 0;
-            
+
         }
 
-        // Funciona correctamente
+
+        //Guardar los datos del cliente 
         private void btnGuardar_Click(object sender, RoutedEventArgs e)
         {
             Cliente guardarCliente = new Cliente()
@@ -118,7 +103,7 @@ namespace OnBreak_MDT_V._2
 
 
 
-        // Funciona correctamente
+        // Buscar cliente por Rut
         private void btnBuscar_Click(object sender, RoutedEventArgs e)
         {
             Cliente buscarCliente = new Cliente()
@@ -149,7 +134,8 @@ namespace OnBreak_MDT_V._2
             }
 
         }
-        //Falta modificar y arreglar 
+
+        //Edita un registro de un cliente 
         private void btnEditar_Click(object sender, RoutedEventArgs e)
         {
             Cliente actualizar = new Cliente()
@@ -178,13 +164,16 @@ namespace OnBreak_MDT_V._2
                 MessageBox.Show("No existe cliente, al que desea actulizar", "Atecion", MessageBoxButton.OK, MessageBoxImage.Warning);
                 LimpiarCliente();
             }
-            
+
 
 
         }
 
+
+        //instancia de clase global para comunicar diferentes vistas y clases
         public Cliente cliGlobal;
-        // Funciona correctamente pero aun se puede mejorar
+
+        // Encargada de listar los clientes guardados en la base de datos
         private void btnListar_Click(object sender, RoutedEventArgs e)
         {
             Cliente cli = new Cliente();
@@ -195,6 +184,7 @@ namespace OnBreak_MDT_V._2
 
         }
 
+        //Almacena y entrega los datos almacenados en variables globales y referencias
         public void MostrarDatosCliente()
         {
             if (cliGlobal != null)

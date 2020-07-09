@@ -1,9 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Reflection;
 
 namespace OnBreak.Negocio
 {
@@ -35,7 +32,7 @@ namespace OnBreak.Negocio
         {
             Datos.OnBreakDBEntities bbdd = new Datos.OnBreakDBEntities();
             try
-            {   
+            {
                 List<Datos.ModalidadServicio> listaModalidad = bbdd.ModalidadServicio.ToList<Datos.ModalidadServicio>();
                 return GenerarListado(listaModalidad);
             }

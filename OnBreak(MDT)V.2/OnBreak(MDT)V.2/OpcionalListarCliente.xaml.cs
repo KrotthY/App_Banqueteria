@@ -1,20 +1,7 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using OnBreak.Negocio;
+using System;
 using System.Windows;
-using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
 using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Shapes;
-using OnBreak.Negocio;
-using MaterialDesignThemes.Wpf;
-using System.Diagnostics;
-using System.Windows.Markup;
 
 namespace OnBreak_MDT_V._2
 {
@@ -29,17 +16,19 @@ namespace OnBreak_MDT_V._2
             CargarListaClienteDg();
         }
 
-        // Funciona correctamente
+        // Cargar el dataGrid
         private void CargarListaClienteDg()
         {
             dgListarCliente.ItemsSource = new Cliente().ReadAll();
 
         }
 
+
+        // get y set de clase instancia global
         public Cliente cli { get; private set; }
 
 
-        // Funciona correctamente el metodo para poder extrar una fila desde el data grid
+        //  metodo para poder extrar una fila desde el data grid
         public void dgListarCliente_MouseDoubleClick(object sender, MouseButtonEventArgs e)
         {
 
@@ -56,15 +45,19 @@ namespace OnBreak_MDT_V._2
 
         }
 
-        // Funciona correctamente pero siento que no es necesario falta modificar 
+
+        // Cierra y refencia la informacion de la ventana
         private void Window_Closed(object sender, EventArgs e)
         {
             reference.MostrarDatosCliente();
             Close();
         }
 
+
+        // referencia 
         UserControlCrearCliente reference;
 
+        // realizar conexcion
         internal void SetUserControl(UserControlCrearCliente win)
         {
             this.reference = win;

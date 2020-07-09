@@ -1,23 +1,9 @@
-﻿using System;
+﻿using OnBreak.Negocio;
+using System;
 using System.Collections.Generic;
-using System.Data;
-using System.Linq;
-using System.Net;
-using System.Runtime.InteropServices;
-using System.Text;
-using System.Threading;
-using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
 using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
-using System.Windows.Shapes;
-using Microsoft.SqlServer.Server;
-using OnBreak.Negocio;
 
 
 
@@ -37,8 +23,7 @@ namespace OnBreak_MDT_V._2
 
         }
 
-        // Funciona correctamente pero aun tiene que modifcarse ya existe problemas 
-        //para regisrar un contrato entonces e stearon algunos valores para pruebas habra que editarlos
+        // Encargado de limpiar comtroles de la vista
         private void LimpiarContratos()
         {
             txtRut.Text = string.Empty;
@@ -57,14 +42,17 @@ namespace OnBreak_MDT_V._2
 
             //CargarModalidadServicio();
             CargarTipoEvento();
-            
+
 
         }
 
-        public bool Inicio = false; 
+
+        //bool para controlar la carga y muestra de informacion del combobox modalidad, no es necesario pero
+        // tiene buen efecto visual.
+        public bool Inicio = false;
 
 
-        // Funciona correctamente
+        // Carga los tipo de evento al combobox cbotipo
         private void CargarTipoEvento()
         {
             cboTipoEvento.ItemsSource = new TipoEvento().ReadAll();
@@ -72,13 +60,13 @@ namespace OnBreak_MDT_V._2
             cboTipoEvento.SelectedValuePath = "IdTipoEvento";
             cboTipoEvento.SelectedIndex = 0;
 
-         
+
         }
 
 
 
 
-        // Funciona correctamente guardar un cliente tiene que revisarse
+        // Guarda los datos ingresados por el cliente
         private void btnGuardar_Click(object sender, RoutedEventArgs e)
         {
 
@@ -158,7 +146,7 @@ namespace OnBreak_MDT_V._2
         }
 
 
-        // Aun sin terminar pero se tiene un idea del desarrollo
+        // Busca el rut ingresado por el usuario
         private void btnBuscar_Click(object sender, RoutedEventArgs e)
         {
             Cliente buscarCliente = new Cliente()
@@ -185,9 +173,12 @@ namespace OnBreak_MDT_V._2
 
 
 
-        //Funciona Correctamente
+        //Instancia publica para almacenar valores globales y interconectar las vistas 
         public Contrato contraGlobal;
 
+
+
+        //Encargado de cargar los contratos ingresados por el usuario /paso 1
         private void btnListar_Click(object sender, RoutedEventArgs e)
         {
             Contrato contra = new Contrato();
@@ -199,7 +190,7 @@ namespace OnBreak_MDT_V._2
         }
 
 
-        // Funciona Correctamente
+        // Encargado de editar los datos del cliente y luego actualizarlos
         private void btnEditar_Click(object sender, RoutedEventArgs e)
         {
 
@@ -252,8 +243,8 @@ namespace OnBreak_MDT_V._2
         }
 
 
-        //INICIO KEY UP AND DOWN
-        //Terminado
+
+        // Activa de forma automatica los valores(total) mostrados en la vista para el usuario 
         private void txtPersonalAdicional_KeyUp(object sender, KeyEventArgs e)
         {
 
@@ -266,7 +257,7 @@ namespace OnBreak_MDT_V._2
         }
 
 
-        //Setear clases globales
+        //Encargado de almacenar y mostrar los datos capturados desde otra visa y tiene referencia con la clase global /paso2
         public void MostrarDatosContrato()
         {
 
@@ -294,8 +285,7 @@ namespace OnBreak_MDT_V._2
 
 
 
-        // El metodo funciona correctamente el  calculo
-        //Falta Agregar valor de eventos
+        // Hace lo lo que dice el nombre xd
         private void CalcularValorContrato()
         {
             int totalAsistentes = 0;
@@ -363,13 +353,7 @@ namespace OnBreak_MDT_V._2
         }
 
 
-        private void cboModalidad_SelectionChanged(object sender, SelectionChangedEventArgs e)
-        {
-
-
-
-        }
-
+        // El combo box con dependencia
         private void cboTipoEvento_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
             if (Inicio)
@@ -397,7 +381,7 @@ namespace OnBreak_MDT_V._2
                     cboModalidad.DisplayMemberPath = "Nombre";
                     cboModalidad.SelectedValuePath = "IdModalidad";
                     cboModalidad.SelectedIndex = 0;
-                    
+
                 }
                 catch (Exception)
                 {
@@ -409,11 +393,11 @@ namespace OnBreak_MDT_V._2
 }
 
 
-         
-    
-            
-        
-    
+
+
+
+
+
 
 
 

@@ -1,18 +1,7 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using OnBreak.Negocio;
 using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
 using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
-using System.Windows.Shapes;
-using OnBreak.Negocio;
 
 namespace OnBreak_MDT_V._2
 {
@@ -27,14 +16,16 @@ namespace OnBreak_MDT_V._2
             LimpiarListarContrato();
         }
 
+        // limpiar vista de usuario y controles
         private void LimpiarListarContrato()
         {
-            
+
             CargarTipoEvento();
             CargarDataGridListContrato();
 
         }
 
+        // cargar datagrid
         private void CargarDataGridListContrato()
 
         {
@@ -42,15 +33,16 @@ namespace OnBreak_MDT_V._2
 
         }
 
-        //funciona como corresponde
+
+        //carga combobox tipo evento
         private void CargarTipoEvento()
         {
-            
+
             cboTipoEvento.ItemsSource = new TipoEvento().ReadAll();
             cboTipoEvento.DisplayMemberPath = "Descripcion";
             cboTipoEvento.SelectedValuePath = "IdTipoEvento";
             cboTipoEvento.SelectedIndex = 0;
-            
+
 
         }
 
@@ -62,9 +54,9 @@ namespace OnBreak_MDT_V._2
             LimpiarListarContrato();
         }
 
-        //Funciona correctamente
-        //solo es un boton para actualizar el data grid, esto debe mejorarse ya que deberia
-        //Actualizarse a tiempo real para asi quitar este boton inecesario
+
+
+        //Elimina un cliente a seleccion del usuario 
 
         private void btnEliminar_Click(object sender, RoutedEventArgs e)
         {
@@ -99,6 +91,8 @@ namespace OnBreak_MDT_V._2
             }
         }
 
+
+        // obtiene la informacion a seleccion del usuario
         private void dgListaContratoLc_MouseDoubleClick(object sender, MouseButtonEventArgs e)
         {
             Contrato contrato = dgListaContratoLc.SelectedItem as Contrato;
@@ -114,6 +108,8 @@ namespace OnBreak_MDT_V._2
 
         }
 
+
+        // buscar un contrato 
         private void btnBuscar_Click(object sender, RoutedEventArgs e)
         {
             Contrato contrato = new Contrato()
@@ -140,6 +136,8 @@ namespace OnBreak_MDT_V._2
 
         }
 
+
+        // carga los datagrid
         private void Grid_IsVisibleChanged(object sender, DependencyPropertyChangedEventArgs e)
         {
 

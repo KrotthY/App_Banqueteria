@@ -1,9 +1,6 @@
-﻿using OnBreak.Datos;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace OnBreak.Negocio
 {
@@ -175,7 +172,7 @@ namespace OnBreak.Negocio
             }
         }
 
-        public List<Cliente> ReadAllByTipoActividad( int idActividad)
+        public List<Cliente> ReadAllByTipoActividad(int idActividad)
         {
             Datos.OnBreakDBEntities bbdd = new Datos.OnBreakDBEntities();
             try
@@ -190,7 +187,7 @@ namespace OnBreak.Negocio
             }
         }
 
-    
+
     }
 
 }

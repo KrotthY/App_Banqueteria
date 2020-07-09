@@ -1,17 +1,7 @@
 ﻿using OnBreak.Negocio;
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows;
-using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
 using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Shapes;
 
 namespace OnBreak_MDT_V._2
 {
@@ -26,14 +16,19 @@ namespace OnBreak_MDT_V._2
             CargarListaClienteDg();
         }
 
-        //funciona correctamente
+        //Carga el datagrid
         private void CargarListaClienteDg()
         {
             dgListaContratos.ItemsSource = new Contrato().ReadAll();
 
         }
+
+
+        // get y set clase global
         public Contrato contra { get; private set; }
-        // Funciona correctamente el metodo para poder extrar una fila desde el data grid
+
+
+        //metodo para poder extrar una fila desde el data grid
         private void dgListaContratos_MouseDoubleClick(object sender, MouseButtonEventArgs e)
         {
 
@@ -48,14 +43,19 @@ namespace OnBreak_MDT_V._2
 
             this.Close();
         }
+
+        // cerrar venta y referenciar datos
         private void Window_Closed(object sender, EventArgs e)
         {
             reference.MostrarDatosContrato();
             Close();
         }
 
+
+        //referencia
         UserControlAgregarContratos reference;
 
+        // realizar conexcion con otra vista
         internal void SetUserControl(UserControlAgregarContratos win)
         {
             this.reference = win;

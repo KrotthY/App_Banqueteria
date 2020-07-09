@@ -3,8 +3,6 @@ using MaterialDesignThemes.Wpf;
 using System.Collections.Generic;
 using System.Windows;
 using System.Windows.Controls;
-using OnBreak.Negocio;
-using System;
 
 namespace OnBreak_MDT_V._2
 {
@@ -20,11 +18,11 @@ namespace OnBreak_MDT_V._2
             InitializeComponent();
 
             var menuInicio = new List<SubItem>();
-            var item0 = new ItemMenu("Inicio",menuInicio,PackIconKind.House);
-            
+            var item0 = new ItemMenu("Inicio", menuInicio, PackIconKind.House);
+
 
             var menuCliente = new List<SubItem>();
-            menuCliente.Add(new SubItem("Ingresar Cliente" , new UserControlCrearCliente()));
+            menuCliente.Add(new SubItem("Ingresar Cliente", new UserControlCrearCliente()));
             menuCliente.Add(new SubItem("Lista de Clientes", new UserControlListarCliente()));
 
             var item1 = new ItemMenu("Adm Clientes", menuCliente, PackIconKind.Account);
@@ -45,10 +43,10 @@ namespace OnBreak_MDT_V._2
 
         }
 
-        internal void SwitchScreen (object sender)
+        internal void SwitchScreen(object sender)
         {
             var screen = ((UserControl)sender);
-            if(screen != null)
+            if (screen != null)
             {
                 StackPanelMain.Children.Clear();
                 StackPanelMain.Children.Add(screen);
@@ -63,12 +61,12 @@ namespace OnBreak_MDT_V._2
         //Metodos
         //Actividad empresa
 
-       
-         
+
+
     }
 
-      
-    
+
+
 }
 
 public static class MyGlobals

@@ -1,22 +1,18 @@
-﻿using Microsoft.SqlServer.Server;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Reflection;
 
 
 namespace OnBreak.Negocio
 {
     public class ActividadEmpresa
     {
-        public int IdActividadEmpresa { get; set;}
+        public int IdActividadEmpresa { get; set; }
         public string Descripcion { get; set; }
 
 
 
-        public ActividadEmpresa() 
+        public ActividadEmpresa()
         {
             this.Init();
         }

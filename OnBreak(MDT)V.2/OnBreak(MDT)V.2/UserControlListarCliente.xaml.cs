@@ -1,19 +1,7 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using OnBreak.Negocio;
 using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
 using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
-using System.Windows.Shapes;
-using OnBreak.Negocio;
-using System.Timers;
 
 
 namespace OnBreak_MDT_V._2
@@ -32,7 +20,7 @@ namespace OnBreak_MDT_V._2
 
         }
 
-        // Funciona correctamente
+        // limpia la vista del usuario al equivocarse o al iniciar o lo que desee el programador
         private void LimpiarListar()
         {
             CargarActividadEmpresa();
@@ -41,7 +29,7 @@ namespace OnBreak_MDT_V._2
 
         }
 
-        // Funciona correctamente
+        // Carga el combobox actividad
         private void CargarActividadEmpresa()
         {
             cboTipoActividad.ItemsSource = new ActividadEmpresa().ReadAll();
@@ -51,7 +39,7 @@ namespace OnBreak_MDT_V._2
 
         }
 
-        // Funciona correctamente
+        //Carga el combobox tipo
         private void CargarTipoEmpresa()
         {
             cboTipoEmpresa.ItemsSource = new TipoEmpresa().ReadAll();
@@ -60,7 +48,8 @@ namespace OnBreak_MDT_V._2
             cboTipoEmpresa.SelectedIndex = 0;
         }
 
-        // Funciona correctamente
+
+        // cargar datagrid
         private void CargarDataGridList()
 
         {
@@ -78,7 +67,7 @@ namespace OnBreak_MDT_V._2
 
 
 
-
+        // metodo para eliminar un cliente a seleccion del usuario
         private void btnEliminar_Click(object sender, RoutedEventArgs e)
         {
             Contrato checkContrato = new Contrato()
@@ -88,15 +77,15 @@ namespace OnBreak_MDT_V._2
             Cliente cliente = new Cliente()
             {
                 RutCliente = MyGlobals._rut,
-                
+
             };
 
-            if(txtRutLcli.Text != "")
+            if (txtRutLcli.Text != "")
             {
                 cliente.RutCliente = txtRutLcli.Text;
-                checkContrato.RutCliente  = txtRutLcli.Text;
+                checkContrato.RutCliente = txtRutLcli.Text;
             }
-             
+
 
             if (cliente.Read())
             {
@@ -130,6 +119,8 @@ namespace OnBreak_MDT_V._2
             }
         }
 
+
+        //Obtiene la informacion selecciona por el usuario
         private void dgListaClienteLcli_MouseDoubleClick(object sender, MouseButtonEventArgs e)
         {
             Cliente cliente = dgListaClienteLcli.SelectedItem as Cliente;
@@ -145,6 +136,8 @@ namespace OnBreak_MDT_V._2
 
         }
 
+
+        // busca un cliente segun estime el usuario
         private void btnBuscar_Click(object sender, RoutedEventArgs e)
         {
             Cliente cliente = new Cliente()
@@ -160,7 +153,7 @@ namespace OnBreak_MDT_V._2
                 cboTipoEmpresa.SelectedIndex = cliente.IdTipoEmpresa;
 
                 MessageBox.Show("Cliente fue Encontrado", "Notificacion", MessageBoxButton.OK, MessageBoxImage.Information);
-                
+
             }
             else
             {
@@ -169,6 +162,8 @@ namespace OnBreak_MDT_V._2
             }
         }
 
+
+        // al cambiar de pestaña se actuliza el datagrid
         private void Grid_IsVisibleChanged(object sender, DependencyPropertyChangedEventArgs e)
         {
             dgListaClienteLcli.ItemsSource = null;
